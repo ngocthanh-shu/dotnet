@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Eshoper_CD.Models.ProductCartModel>
+
+@foreach (var i in Model)
+{
+    <tr>
+        <td class="cart_product">
+            <a href=""><img style="width:93px;" src="~/Assets/Client/images/products/@i.productImg" alt=""></a>
+        </td>
+        <td class="cart_description">
+            <h4 style="width:38px;">@Html.ActionLink(i.productName, "ProductDetail", "Products", new { id = i.productId, }, new { @style = "margin-left:-127px;" })</h4>
+        </td>
+        <td class="cart_price">
+            <p>@i.productPrice</p>
+        </td>
+        <td class="cart_quantity">
+            <div class="cart_quantity_button">
+                <input disabled class="cart_quantity_input" type="text" name="quantity" value="@i.cartQuanity" autocomplete="off" size="2">
+            </div>
+        </td>
+        <td class="cart_total">
+            <p class="cart_total_price">@i.total</p>
+        </td>
+    </tr>
+}
+

@@ -1,0 +1,67 @@
+﻿@model Eshoper_CD.Models.CheckoutModel
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    ::placeholder {
+        color: #fff;
+    }
+    input {
+        background-color: #ca570a;
+        color: #fff;
+        border: none;
+        margin-bottom: 2px;
+    }
+</style>
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Check out</li>
+            </ol>
+        </div><!--/breadcrums-->
+
+        <div class="step-one">
+            <h2 class="heading">Step1</h2>
+        </div>
+        @Html.ValidationSummary(false, null, new { @class = "alert alert-danger" })
+        <div class="shopper-informations">
+            @using (Html.BeginForm("Index", "Checkout", FormMethod.Post, new { @class = "tm-edit-product-form", enctype = "multipart/form-data" }))
+            {
+                <div class="row">
+                    <div class="col-sm-5 clearfix">
+                        <div class="bill-to">
+                            <p>Bill To</p>
+                            <div class="form-one">
+                                @Html.TextBoxFor(model => model.email, new { @type = "text", @placeholder = "Email*" })
+                                @Html.TextBoxFor(model => model.fname, new { @type = "text", @placeholder = "First Name *" })
+                                @Html.TextBoxFor(model => model.lname, new { @type = "text", @placeholder = "Last Name *" })
+                                @Html.TextBoxFor(model => model.address, new { @type = "text", @placeholder = "Address *" })
+                            </div>
+                            <div class="form-two">
+                                @Html.TextBoxFor(model => model.zip, new { @type = "text", @placeholder = "Zip / Postal Code *" })
+                                @Html.TextBoxFor(model => model.password, new { @type = "password", @placeholder = "Confirm password" })
+                                @Html.TextBoxFor(model => model.mobile, new { @type = "text", @placeholder = "Mobile Phone" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="order-message">
+                            <p>Shipping Order</p>
+                            @Html.TextAreaFor(model => model.message, new { @name = "message", @placeholder = "Notes about your order, Special Notes for Delivery", @rows = "16" })
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="shopper-info">
+                            <p>Checkout</p>
+                            <a class="btn btn-primary" href="">Get Quotes</a>
+                            <button type="submit" class="btn btn-primary">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @Html.Action("Review", "Checkout")
+    </div>
+</section> <!--/#cart_items-->

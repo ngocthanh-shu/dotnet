@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Models.Framework.Profile>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Account</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table" id="datatablesSimple">
+                            <a href="/Admin/tai-khoan/them-tai-khoan">
+                                <i style="display: inline-block;" class="now-ui-icons ui-1_simple-add"></i>
+                                <p style="display: contents;">Add New Account</p>
+                            </a>
+                            <thead class=" text-primary">
+                            <th>
+                                Username
+                            </th>
+                            <th>
+                                Full Name
+                            </th>
+                            <th>
+                                Phone Number
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th class="text-right">
+                                Country
+                            </th>
+                            </thead>
+                            <tbody>
+                                @foreach (var i in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        <a><p>@Html.ActionLink(i.username, "AccountDetail", "Accounts", new { id = i.username, }, new { @style = "color:black;" })</p></a>
+                                    </td>
+                                    <td>
+                                        @i.lname @i.fname
+                                    </td>
+                                    <td>
+                                        @i.phonenumber
+                                    </td>
+                                    <td>
+                                        @i.email
+                                    </td>
+                                    <td class="text-right">
+                                        @i.Country
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

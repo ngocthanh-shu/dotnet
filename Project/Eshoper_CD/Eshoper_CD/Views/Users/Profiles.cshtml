@@ -1,0 +1,213 @@
+﻿@model Eshoper_CD.Models.ProfileModel
+@{
+    ViewBag.Title = "Profiles";
+}
+
+<link rel="stylesheet" href="~/Assets/Admin/pe524/jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
+<script src="~/Assets/Admin/pe524/js/bootstrap.min.js"></script>
+<!-- https://getbootstrap.com/ -->
+<script src="~/Assets/Admin/pe524/jquery-ui-datepicker/jquery-ui.min.js"></script>
+<script src="~/Assets/Admin/pe524/js/jquery-3.3.1.min.js"></script>
+<div class="col-sm-9">
+    <div class="container bootstrap snippet" style="width:100%;">
+        <div class="row">
+            <div class="col-sm-12"><h1>Profile</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                    <li><a data-toggle="tab" href="#messages">Menu 1</a></li>
+                    <li><a data-toggle="tab" href="#settings">Menu 2</a></li>
+                </ul>
+                <div id="error">
+
+                </div>
+                @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                @using (Html.BeginForm("Profiles", "Users", FormMethod.Post, new { @class = "tm-edit-product-form", enctype = "multipart/form-data" }))
+                {
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <label>Username</label>
+                                    @Html.TextBoxFor(model => model.username, new { @type = "text", @disabled = "", @class = "form-control validate", @readonly = "readonly" })
+                                    @Html.TextBoxFor(model => model.username, new { @type = "text", @class = "form-control validate", @style = "display:none;", @readonly = "readonly" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <label>Password</label>
+                                    @Html.TextBoxFor(model => model.password, new { @type = "password", @disabled = "", @class = "form-control validate", @readonly = "readonly" })
+                                    @Html.TextBoxFor(model => model.password, new { @type = "password", @class = "form-control validate", @style = "display:none;", @readonly = "readonly" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>New Password</label>
+                                    @Html.TextBoxFor(model => model.newPassword, new { @id = "newpass", @type = "password", @class = "form-control", @placeholder = "New password" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>New Verify</label>
+                                    @Html.TextBoxFor(model => model.verify, new { @id = "repeatpass", @type = "password", @class = "form-control", @placeholder = "Verify new password" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <button id="submitBtn" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                        </div><!--/tab-pane-->
+                        <div class="tab-pane" id="messages">
+                            <script>
+                                $(function () {
+                                    $("#expire_date").datepicker();
+                                });
+                            </script>
+                            <h2></h2>
+
+                            <hr>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>First name</label>
+                                    @Html.TextBoxFor(model => model.fname, new { @type = "text", @class = "form-control", @placeholder = "First name" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>Last name</label>
+                                    @Html.TextBoxFor(model => model.lname, new { @type = "text", @class = "form-control", @placeholder = "Last name" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>Phone Number</label>
+                                    @Html.TextBoxFor(model => model.phone, new { @type = "text", @class = "form-control", @placeholder = "Phone number" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>Birthday</label>
+                                    @Html.TextBoxFor(model => model.birthday, new { @id = "expire_date", @name = "expire_date", @type = "text", @class = "form-control validate" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>Email Address</label>
+                                    @Html.TextBoxFor(model => model.email, new { @type = "text", @class = "form-control", @placeholder = "Email" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <button id="submitBtn1" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                </div>
+                            </div>
+
+
+                        </div><!--/tab-pane-->
+                        <div class="tab-pane" id="settings">
+
+
+                            <hr>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>Country</label>
+                                    @Html.TextBoxFor(model => model.country, new { @type = "text", @class = "form-control", @placeholder = "Country" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>City</label>
+                                    @Html.TextBoxFor(model => model.city, new { @type = "text", @class = "form-control", @placeholder = "City" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>Address</label>
+                                    @Html.TextBoxFor(model => model.address, new { @type = "text", @class = "form-control", @placeholder = "Address" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-xs-6">
+                                    <label>Postal Code</label>
+                                    @Html.TextBoxFor(model => model.zip, new { @type = "text", @class = "form-control", @placeholder = "Postal Code" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-xs-12">
+                                    <label>About Me</label>
+                                    @Html.TextAreaFor(model => model.aboutme, new { @class = "form-control", @rows = "3", @cols = "80", @required = "required", @placeholder = "Here can be your description" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <br>
+                                    <button id="submitBtn2" class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                    <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!--/tab-pane-->
+                }
+            </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+</div>
+<script>
+    var newPass = document.getElementById("newpass");
+    var repeatPass = document.getElementById("repeatpass");
+    var error = document.getElementById("error");
+
+    var submit = document.getElementById("submitBtn");
+    var submit1 = document.getElementById("submitBtn1")
+    var submit2 = document.getElementById("submitBtn2")
+    submit.addEventListener("click", function (event) {
+        if (newPass.value != repeatPass.value) {
+            event.preventDefault();
+            error.innerHTML = "<div class='alert alert-danger'><button type = 'button' aria-hidden='true' class='close'><i class='now-ui-icons ui-1_simple-remove'></i></button><span><b> Wrong - </b> New password and re-enter different password </span></div >";
+        }
+    })
+
+    submit1.addEventListener("click", function (event) {
+        if (newPass.value != repeatPass.value) {
+            event.preventDefault();
+            error.innerHTML = "<div class='alert alert-danger'><button type = 'button' aria-hidden='true' class='close'><i class='now-ui-icons ui-1_simple-remove'></i></button><span><b> Wrong - </b> New password and re-enter different password </span></div >";
+        }
+    })
+
+    submit2.addEventListener("click", function (event) {
+        if (newPass.value != repeatPass.value) {
+            event.preventDefault();
+            error.innerHTML = "<div class='alert alert-danger'><button type = 'button' aria-hidden='true' class='close'><i class='now-ui-icons ui-1_simple-remove'></i></button><span><b> Wrong - </b> New password and re-enter different password </span></div >";
+        }
+    })
+</script>

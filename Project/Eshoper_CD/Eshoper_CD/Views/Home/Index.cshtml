@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Trang Chủ";
+}
+
+<div class="col-sm-9 padding-right">
+    <div class="features_items">
+        <!--features_items-->
+        <h2 class="title text-center">Features Items</h2>
+        @{ Html.RenderAction("getFeature", "Default");}
+
+    </div><!--features_items-->
+
+    <div class="category-tab">
+        <!--category-tab-->
+        @{ Html.RenderAction("getCategoryTab", "Default");}
+
+    </div><!--/category-tab-->
+
+    <div class="recommended_items">
+        <!--recommended_items-->
+        <h2 class="title text-center">recommended items</h2>
+        @{ Html.RenderAction("getRecommend", "Default");}
+    </div><!--/recommended_items-->
+
+</div>

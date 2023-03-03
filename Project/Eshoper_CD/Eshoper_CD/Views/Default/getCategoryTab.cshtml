@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Models.Framework.category>
+
+<div class="col-sm-12">
+    <ul class="nav nav-tabs">
+        @{
+            string acitve = "active";
+            int k = 0;
+            foreach (var i in Model)
+            {
+                <li class="@acitve"><a href="#tab-@i.id" data-toggle="tab">@i.name</a></li>
+                k += 1;
+                if (k > 0)
+                {
+                    acitve = "";
+                }
+            }
+        }
+    </ul>
+    <div class="tab-content">
+        @{
+            string active = "active in";
+            int j = 0;
+            foreach (var i in Model)
+            {
+                <div class="tab-pane fade @active" id="tab-@i.id">
+                    @Html.Action("getProductCategoryTab", "Default", new { id = i.id })
+                </div>
+                j += 1;
+                if (j > 0)
+                {
+                    active = "";
+                }
+            }
+        }
+    </div>
+</div>

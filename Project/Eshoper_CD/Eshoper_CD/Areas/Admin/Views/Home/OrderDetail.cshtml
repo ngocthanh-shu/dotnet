@@ -1,0 +1,98 @@
+﻿@model Models.Framework.Checkout
+@{
+    ViewBag.Title = "OrderDetail";
+}
+
+
+<link href="~/Assets/Admin/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Order</h5>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm("AccountDetail", "Accounts", FormMethod.Post, new { @class = "tm-edit-product-form", enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    @Html.TextBoxFor(model => model.fullname, new { @type = "text", @disabled = "", @class = "form-control validate", @required = "required", @placeholder = "First Name" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-1">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    @Html.TextBoxFor(model => model.address, new { @type = "text", @disabled = "", @class = "form-control validate", @required = "required", @placeholder = "Last Name" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    @Html.TextBoxFor(model => model.phone, new { @id = "expire_date", @disabled = "", @name = "expire_date", @type = "text", @class = "form-control validate" })
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Datebegin</label>
+                                    @Html.TextBoxFor(model => model.datebegin, new { @type = "text", @disabled = "", @class = "form-control validate", @required = "required", @placeholder = "Phone Number" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Message</label>
+                                    @Html.TextAreaFor(model => model.message, new { @class = "form-control", @disabled = "", @rows = "3", @cols = "80", @required = "required", @placeholder = "Here can be your description" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button hidden type="submit" class="btn btn-danger btn-block text-uppercase">Reject</button>
+                                @Html.ActionLink("Reject", "RejectOrder","Home",new { id = Model.id },new { @class = "btn btn-danger btn-block text-uppercase" })
+                            </div>
+                            <div class="col-md-4">
+                                <button hidden type="submit" class="btn btn-primary btn-block text-uppercase">Approve</button>
+                                @Html.ActionLink("Approve", "ApproveOrder", "Home", new { id = Model.id }, new { @class = "btn btn-primary btn-block text-uppercase" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive col-xl-12 col-lg-12 col-md-12 col-sm-12 mx-auto">
+        <div class="review-payment">
+            <h2>Review</h2>
+        </div>
+        <table class="table table-condensed">
+            <thead>
+                <tr class="cart_menu">
+                    <td class="image">Item</td>
+                    <td class="description"></td>
+                    <td class="price">Price</td>
+                    <td class="quantity">Quantity</td>
+                    <td class="total">Total</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.Action("Preview", "Home", new { id = Model.cartId })
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                    <td colspan="2">
+                        @Html.Action("Total", "Home" , new { id = Model.cartId })
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

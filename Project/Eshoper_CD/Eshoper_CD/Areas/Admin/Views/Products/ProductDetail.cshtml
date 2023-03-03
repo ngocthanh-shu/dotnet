@@ -1,0 +1,111 @@
+﻿@model Eshoper_CD.Areas.Admin.Models.CreateProduct
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<link rel="stylesheet" href="~/Assets/Admin/pe524/css/templatemo-style.css">
+<link href="~/Assets/Admin/demo/demo.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="~/Assets/Admin/pe524/jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
+<link href="~/Assets/Admin/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="container tm-mt-big tm-mb-big">
+    <div class="row">
+        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+            <div class="card tm-block tm-block-h-auto">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 style="color:#000;" class="tm-block-title d-inline-block">Edit Product</h2>
+                    </div>
+                </div>
+
+
+                @using (Html.BeginForm("ProductDetail", "Products", FormMethod.Post, new { @class = "tm-edit-product-form", enctype = "multipart/form-data" }))
+                {
+                    <div class="row tm-edit-product-row">
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="form-group mb-3">
+                                <label for="name">
+                                    Product Name
+                                </label>
+                                @Html.TextBoxFor(model => model.name, new { @id = "name", @name = "name", @type = "text", @value = Model.name, @class = "form-control validate", @required = "required" })
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="price">
+                                    Price
+                                </label>
+                                @Html.TextBoxFor(model => model.price, new { @id = "price", @name = "price", @type = "number", @value = Model.price, @class = "form-control validate", @placeholder = "$", @required = "required" })
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="description">Description</label>
+                                @Html.TextAreaFor(model => model.description, new { @style = "border: 1px solid #E3E3E3; border-radius: 30px;", @class = "form-control validate", @rows = "3", @value = Model.description, @required = "required" })
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="category">Category</label>
+                                @Html.DropDownListFor(model => model.categoryId, new SelectList(Model.categories, "id", "name"), "Select Category", new { @class = "custom-select tm-select-accounts", @id = "category" })
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label for="expire_date">
+                                        Expire Date
+                                    </label>
+                                    @Html.TextBoxFor(model => model.datebegin, new { @id = "expire_date", @name = "expire_date", @type = "text", @class = "form-control validate" })
+                                </div>
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label for="stock">
+                                        Units In Stock
+                                    </label>
+                                    @Html.TextBoxFor(model => model.quantity, new { @id = "stock", @name = "stock", @type = "number", @class = "form-control validate", @required = "required" })
+                                    @Html.TextBoxFor(model => model.img, new { @style = "display:none;" })
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            var imagePreview = function (event) {
+                                var result = document.getElementById("imgpreview");
+                                result.src = URL.createObjectURL(event.target.files[0]);
+                            };
+                        </script>
+                        <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                            <div style="border-radius: 20px" class="tm-product-img-dummy mx-auto">
+                                <img src="~/Assets/Client/images/products/@Model.img" style="width: 100%; height: 100%; border-radius:20px;" id="imgpreview" />
+                            </div>
+                            <div class="custom-file mt-3 mb-3">
+                                <input type="file" name="image" id="fileInput" style="display:none;" onchange="imagePreview(event)" />
+                                <input type="button"
+                                       class="btn btn-primary btn-block mx-auto"
+                                       value="UPLOAD PRODUCT IMAGE"
+                                       onclick="document.getElementById('fileInput').click();" />
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Now</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-danger btn-block text-uppercase" value="Delete" formaction="@Url.Action("Delete","Products")">
+                                <i class="now-ui-icons shopping_basket">
+                                </i>
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- https://jquery.com/download/ -->
+<!-- https://jqueryui.com/download/ -->
+<script src="~/Assets/Admin/pe524/js/bootstrap.min.js"></script>
+<!-- https://getbootstrap.com/ -->
+<script src="~/Assets/Admin/pe524/jquery-ui-datepicker/jquery-ui.min.js"></script>
+<script src="~/Assets/Admin/pe524/js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        $("#expire_date").datepicker();
+    });
+</script>
+
+

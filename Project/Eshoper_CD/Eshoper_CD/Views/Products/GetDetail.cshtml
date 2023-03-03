@@ -1,0 +1,74 @@
+﻿@model Models.Framework.product
+@{
+    ViewBag.Title = "GetDetail";
+}
+
+<div class="col-sm-9 padding-right">
+    <div class="product-details">
+        <!--product-details-->
+        <div class="col-sm-5">
+            <div class="view-product">
+                <img src="~/Assets/Client/images/products/@Model.img" alt="" />
+                <h3>ZOOM</h3>
+            </div>
+            <div id="similar-product" class="carousel slide" data-ride="carousel">
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <a href=""><img style="height: 85px; width: 84px" src="~/Assets/Client/images/products/@Model.img" alt=""></a>
+                        <a href=""><img style="height: 85px; width: 84px" src="~/Assets/Client/images/products/@Model.img" alt=""></a>
+                        <a href=""><img style="height: 85px; width: 84px" src="~/Assets/Client/images/products/@Model.img" alt=""></a>
+                    </div>
+                    <div class="item">
+                        <a href=""><img style="height: 85px; width: 84px" src="~/Assets/Client/images/products/@Model.img" alt=""></a>
+                        <a href=""><img style="height: 85px; width: 84px" src="~/Assets/Client/images/products/@Model.img" alt=""></a>
+                        <a href=""><img style="height: 85px; width: 84px" src="~/Assets/Client/images/products/@Model.img" alt=""></a>
+                    </div>
+                    <div class="item">
+                        <a href=""><img style="height: 85px; width: 84px" src="~/Assets/Client/images/products/@Model.img" alt=""></a>
+                        <a href=""><img style="height: 85px; width: 84px" src="~/Assets/Client/images/products/@Model.img" alt=""></a>
+                        <a href=""><img style="height: 85px; width: 84px" src="~/Assets/Client/images/products/@Model.img" alt=""></a>
+                    </div>
+
+                </div>
+
+                <!-- Controls -->
+                <a class="left item-control" href="#similar-product" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="right item-control" href="#similar-product" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+
+        </div>
+        <div class="col-sm-7">
+            <div class="product-information">
+                <!--/product-information-->
+                <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                <h2>@Model.name</h2>
+                <p>Web ID: @Model.id</p>
+                <img src="images/product-details/rating.png" alt="" />
+                <span>
+                    <span style="display: block; width: 100%">$@Model.price</span>
+                    <label>Quantity:</label>
+                    <input type="text" value="1" />
+                    @Html.ActionLink("Add To Cart", "AddToCart", "Cart", new {id = Model.id}, new { @type = "button", @class = "btn btn-fefault cart" })
+                </span>
+                <p><b>Availability:</b> @Model.quantity In Stock</p>
+                <p><b>Condition:</b> New</p>
+                <p><b>Brand:</b> None</p>
+                <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt="" /></a>
+            </div><!--/product-information-->
+        </div>
+    </div><!--/product-details-->
+
+    <div class="recommended_items">
+        <!--recommended_items-->
+        <h2 class="title text-center">recommended items</h2>
+        @{ Html.RenderAction("getRecommend", "Default");}
+    </div><!--/recommended_items-->
+
+</div>
+

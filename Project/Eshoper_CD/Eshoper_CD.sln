@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshoper_CD", "Eshoper_CD\Eshoper_CD.csproj", "{7C9BAEB9-8C21-41C5-99B6-F9451E4CEEB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{50188192-2B48-463E-A469-E2217D80645A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C9BAEB9-8C21-41C5-99B6-F9451E4CEEB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9BAEB9-8C21-41C5-99B6-F9451E4CEEB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9BAEB9-8C21-41C5-99B6-F9451E4CEEB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9BAEB9-8C21-41C5-99B6-F9451E4CEEB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50188192-2B48-463E-A469-E2217D80645A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50188192-2B48-463E-A469-E2217D80645A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50188192-2B48-463E-A469-E2217D80645A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50188192-2B48-463E-A469-E2217D80645A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1AE4F33-2717-4C23-B0D7-DD1E1913674F}
+	EndGlobalSection
+EndGlobal

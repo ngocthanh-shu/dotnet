@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Eshoper_CD.Models.ProductCartModel>
+<div class="review-payment">
+    <h2>Review & Payment</h2>
+</div>
+
+<div class="table-responsive cart_info">
+    <table class="table table-condensed">
+        <thead>
+            <tr class="cart_menu">
+                <td class="image">Item</td>
+                <td class="description"></td>
+                <td class="price">Price</td>
+                <td class="quantity">Quantity</td>
+                <td class="total">Total</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td class="cart_product">
+                        <a href=""><img style="width:93px;" src="~/Assets/Client/images/products/@i.productImg" alt=""></a>
+                    </td>
+                    <td class="cart_description">
+                        <h4 style="width:38px;">@Html.ActionLink(i.productName, "GetDetail", "Products", new { id = i.productId, }, null)</h4>
+                    </td>
+                    <td class="cart_price">
+                        <p>@i.productPrice</p>
+                    </td>
+                    <td class="cart_quantity">
+                        <div class="cart_quantity_button">
+                            <input class="cart_quantity_input" type="text" name="quantity" value="@i.cartQuanity" autocomplete="off" size="2">
+                        </div>
+                    </td>
+                    <td class="cart_total">
+                        <p class="cart_total_price">@i.total</p>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="4">&nbsp;</td>
+                <td colspan="2">
+                    @Html.Action("Total", "Checkout")
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

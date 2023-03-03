@@ -1,0 +1,18 @@
+﻿@model Eshoper_CD.Models.CartConfirmModel
+<section id="do_action">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="total_area">
+                    <ul>
+                        <li>Cart Sub Total <span>$@Model.totalProduct</span></li>
+                        <li>Eco Tax <span>$@Model.ecoTax</span></li>
+                        <li>Shipping Cost <span>$@Model.shippingCost</span></li>
+                        <li>Total <span>$@Model.total</span></li>
+                    </ul>
+                    @Html.ActionLink("Checkout", "Index", "Checkout", null, new { @class = "btn btn-default check_out" })
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#do_action-->

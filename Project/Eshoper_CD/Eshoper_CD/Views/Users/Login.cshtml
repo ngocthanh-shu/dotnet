@@ -1,0 +1,65 @@
+﻿@model Eshoper_CD.Models.LoginModel
+@using BotDetect.Web.Mvc
+@{
+    ViewBag.Title = "Login";
+}
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
+      rel="stylesheet" type="text/css" />
+@{ MvcCaptcha registerCaptcha = new MvcCaptcha("registerCaptcha"); }
+
+<style>
+    ::placeholder {
+        color: #ccc;
+    }
+</style>
+<section id="form">
+    <!--form-->
+    <div class="container">
+        <div class="row">
+            @Html.ValidationSummary(false, null, new { @class = "alert alert-danger" })
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form">
+                    <!--login form-->
+                    <h2>Login to your account</h2>
+                    @using (Html.BeginForm("Login", "Users", FormMethod.Post, new { @class = "tm-edit-product-form", enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.TextBoxFor(model => model.username, new { @type = "text", @placeholder = "Username" })
+                        @Html.TextBoxFor(model => model.password, new { @type = "password", @placeholder = "Password" })
+                        <span>
+                            <input type="checkbox" class="checkbox">
+                            Keep me signed in
+                        </span>
+                        <button type="submit" class="btn btn-default">Login</button>
+                    }
+                </div><!--/login form-->
+            </div>
+            <div class="col-sm-1">
+                <h2 class="or">OR</h2>
+            </div>
+            <div class="col-sm-4">
+                <div class="signup-form">
+                    <!--sign up form-->
+                    <h2>New User Signup!</h2>
+                    @using (Html.BeginForm("Login", "Users", FormMethod.Post, new { @class = "tm-edit-product-form", enctype = "multipart/form-data" }))
+                    {
+                        @Html.TextBoxFor(model => model.email, new { @type = "text", @placeholder = "Email Address" })
+                        @Html.TextBoxFor(model => model.username, new { @type = "text", @placeholder = "Username" })
+                        @Html.TextBoxFor(model => model.fname, new { @type = "text", @placeholder = "First Name" })
+                        @Html.TextBoxFor(model => model.lname, new { @type = "text", @placeholder = "Last Name" })
+                        @Html.TextBoxFor(model => model.password, new { @type = "password", @placeholder = "Password" })
+                        @Html.TextBoxFor(model => model.passwordConfirm, new { @type = "password", @placeholder = "Confirm Password" })
+                        @Html.Captcha(registerCaptcha)
+                        @Html.TextBox("CaptchaCode")
+                        <button type="submit" class="btn btn-default" formaction="@Url.Action("Register", "Users")">Signup</button>
+                    }
+                </div><!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->
+<style>
+    input {
+        color: #fff !important;
+    }
+</style>

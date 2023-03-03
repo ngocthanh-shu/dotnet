@@ -1,0 +1,7 @@
+﻿@model Models.Framework.category
+
+@{
+    ViewBag.Title = "Sản Phẩm";
+}
+
+@Html.Action("GetProductsByCategory", "Products", new {id = Model.id})

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Models.Framework.category>
+
+<div class="panel-group category-products" id="accordian">
+    <!--category-productsr-->
+    @foreach (var i in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"><a href="/@ViewBag.meta/@i.meta/">@i.name</a></h4>
+            </div>
+        </div>
+    }
+</div>

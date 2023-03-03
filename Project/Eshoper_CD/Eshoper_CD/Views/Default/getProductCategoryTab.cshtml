@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Models.Framework.product>
+
+@foreach (var i in Model)
+{
+    <div class="col-sm-3">
+        <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo text-center">
+                    <img src="~/Assets/Client/images/products/@i.img" alt="" />
+                    <h2>@i.price$</h2>
+                    <a><p>@Html.ActionLink(i.name, "GetDetail", "Products", new { id = i.id, }, new { @style = "color:black;" })</p></a>
+                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

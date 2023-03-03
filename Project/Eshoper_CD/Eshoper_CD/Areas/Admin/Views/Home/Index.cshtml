@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Models.Framework.Checkout>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Order</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table" id="datatablesSimple">
+                            <thead class=" text-primary">
+                            <th>
+                                Order Code
+                            </th>
+                            <th>
+                                Full Name
+                            </th>
+                            <th>
+                                Adrress
+                            </th>
+                            <th>
+                                Phone Number
+                            </th>
+                            <th>
+                                Order Date
+                            </th>
+                            </thead>
+                            <tbody>
+                                @foreach (var i in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @i.id
+                                    </td>
+                                    <td>
+                                        @i.fullname
+                                    </td>
+                                    <td>
+                                        @i.address
+                                    </td>
+                                    <td>
+                                        @i.phone
+                                    </td>
+                                    <td>
+                                        @i.datebegin
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="col-md-4">
+                                            @Html.ActionLink("See Detail","OrderDetail","Home",new { id = i.id }, new { @style = "width:147px;", @class = "btn btn-primary btn-block text-uppercase"})
+                                        </div>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
